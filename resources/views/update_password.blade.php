@@ -12,7 +12,11 @@
         @endforeach
     @endif
 
-    <form action="" method="post">
+    @if (Session::has('message'))
+        <p>{{ Session::get('message' )}}</p>
+    @endif
+    
+    <form action="{{ route('store_password') }}" method="post">
         @method('patch')
         @csrf
         <input type="password" name="new_password" >
